@@ -1,0 +1,79 @@
+.alerta{
+    padding: .5rem;
+    text-align: center;
+    color: $negro;
+    font-weight: $bold;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    
+    &.error{
+        background-color: $Nclaro;
+    }
+
+    &.exito{
+        background-color: #9FC088;
+        color: $negro;
+    }
+}
+
+table.tareas{
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+    color: $negro;
+    text-align: center;
+    background-color: #9FC088;
+    //border-bottom:solid  gray;
+
+    td.estados{
+        background-color: #bbbb37;
+    }
+    td.finalizado{
+        background-color: #679944;
+    }
+    
+    
+      th{            
+            color: $negro;
+            padding: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            
+
+
+        }
+       
+        
+
+ 
+
+
+
+.linea{
+    border-bottom: solid $blanco;
+    padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: antiquewhite;
+        
+        border-bottom:solid  gray;
+
+        
+}
+
+
+}
+
+
+
+.fondo{
+    max-width: 60%;
+    margin: auto;
+}
+
+
+/*.estados{
+    background-color: yellow;
+    .finalizado{
+        background-color: green;
+    }
+}*/

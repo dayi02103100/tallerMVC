@@ -1,0 +1,43 @@
+.boton-amarillo {
+    @include boton($amarillo, inline-block);
+    text-transform: uppercase;
+
+}
+
+.boton-amarillo-block {
+    @include boton($amarillo, block);
+}
+
+.boton-azul {
+    @include boton($negro, display);
+}
+
+
+.boton-azul-block{
+    @include boton($azul, inline-block);
+    color: $negro;
+    text-transform: uppercase;
+}
+
+.boton-Nclaro-block{
+    @include boton($Nclaro, block);
+    text-transform: uppercase;
+    color: $negro;
+
+    .Nclaro{
+        color: $negro;
+
+    }
+}
+
+.boton-rojo-block{
+    @include boton($rojo, inline-block);
+    text-transform: uppercase;
+
+}
+
+.boton-rosa-block{
+    @include boton($rosa, inline-block);
+    text-transform: uppercase;
+
+}

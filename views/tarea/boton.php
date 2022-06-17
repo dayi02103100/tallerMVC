@@ -22,6 +22,7 @@
         <label for="estado">estado:</label>
         <input type="text" id="cambio" name="tarea[estado]" placeholder="Descripcion estado" value="<?php echo s($tarea->estado);?>">              
         
+       
     </fieldset>
     <input type="submit" id="boton" value="Actualizar estado" class=" boton boton-azul-block"> 
    

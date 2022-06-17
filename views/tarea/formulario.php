@@ -15,7 +15,14 @@
         </select>
 
         <label for="estado">estado:</label>
-        <input type="text" id="estado" name="tarea[estado]" placeholder="Descripcion estado" value="<?php echo s($tarea->estado);?>">              
-       
+        <!--input type="text" id="estado" name="tarea[estado]" placeholder="Descripcion estado" value="<//?php echo s($tarea->estado);?>"-->              
+        
+        <select name="tarea[estado]" id="estado">
+                <option selected value= "">--SELECCIONE--</option>
+                <option value="<?php echo s("PENDIENTE");?>">PENDIENTE</option>
+                <option value="<?php echo s("FINALIZADO");?>">FINALIZADO</option>
+
+
+        </select>
     </fieldset>
 

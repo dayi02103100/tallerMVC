@@ -26,7 +26,6 @@ if(isset($resultado)){
         
         <thead>
             <tr>
-                <th>  </th>
                 <th>Id</th>
                 <th>descripcion</th>
                 <th>tipo</th>
@@ -40,14 +39,7 @@ if(isset($resultado)){
         <?php  
 
         foreach($tarea as $tareas): ?>
-            <tr>
-                <td class="linea">
-                    <button class="img-mode-boton" id="boton">
-                        <a  href="../tarea/boton?id=<?php echo $tareas->id;?>"><img src="/public/build/img/check.png"></a>
-                     
-                    </button>
-                    
-                </td>
+            <tr>               
                 <td class="linea">  <?php echo $tareas->id;?></td>
                 <td class="linea">  <?php echo $tareas->descripcion;?></td>
                 <td class="linea"> <?php echo $tareas->tipoid;?></td>
@@ -76,39 +68,6 @@ if(isset($resultado)){
             <?php endforeach; ?>
         </tbody>
     </table>
-<script>
-    /*
-        function cambiar(){      
-
-      if($estado === 'PENDIENTE'){
-        document.getElementById("cambio").classList.remove("linea");
-  
-    }
-     }
-    
-      
-  document.getElementById("boton").onclick = function(){
-      cambiar();        
-  }
-    </script>
-<script>
-  /*  
-    function cambiar(){      
-
-  if($estado === 'PENDIENTE'){
-    document.getElementById("cambio").classList.remove("linea");
-
-}else{
-    <td class="linea estados" id="cambio" style=" background-color: yellow;"><?php echo $tareas->estado;?></td>
-
-}
- }
-
-  
-document.getElementById("boton").onclick = function(){
-  cambiar();        
-}*/
-</script>
 
     
     <script src="/public/build/js/bundle.min.js"></script>

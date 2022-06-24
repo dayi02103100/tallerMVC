@@ -11,7 +11,7 @@ class tipoController{
  $resultado = $_GET['resultado'] ?? null;
 
 
-    $router->render('/tarea/adminT', [
+    $router->render('/tipo/adminT', [
         'tipo' => $tipo,
         'resultado' => $resultado
     ]);        
@@ -69,11 +69,10 @@ class tipoController{
         $id = filter_var($id, FILTER_VALIDATE_INT);
         
         if($id){
-         $tipo  = $_POST['tipo'];//viaja 
-                    
+         $tipo  = $_POST['tipo'];//viaja                     debuguear($_POST);
             if(validarTipoContenido($tipo)){
                 $tipos = tipo::find($id);
-                $tipos->eliminarV();
+                $tipos->eliminar();
             }      
         }
     }

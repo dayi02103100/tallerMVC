@@ -1,7 +1,13 @@
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <body>
 <main class="contenedor seccion">
         <h1>Aministrador de To-Do List</h1>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="stylesheet" href="/public/build/css/app.css">
 
          <?php
@@ -15,22 +21,27 @@ if(isset($resultado)){
              } 
           }
         ?>
-     
+ 
     
 
-        <h2>TAREAS</h2>
-        <a href="crear" class="boton boton-azul-block">Nueva tarea</a>
-          <a href="adminT" class="boton boton-amarillo">Tabla Tipo</a>
-
-    <table class="tareas">
+      <h2>TAREAS</h2>    
+    
+      <div class=" p-2 d-flex justify-content-left ">
         
-        <thead>
+          <a  href="crear" class="btn btn-primary disable fs-2 text-capitalize mx-3">nueva tarea</a>
+ 
+          <a  href="../tipo/adminT" class="btn btn-info disable fs-2 text-capitalize">tipo</a>
+    </div >
+
+    <table class="table mt-5" >
+        
+        <thead >
             <tr>
-                <th>Id</th>
-                <th>descripcion</th>
-                <th>tipo</th>
-                <th>estado</th>
-                <th>acciones</th>
+                <th>ID</th>
+                <th>DESCRIPCION</th>
+                <th>TIPO</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
             </tr>
         </thead>
 
@@ -38,19 +49,19 @@ if(isset($resultado)){
         <tbody><!--  mostrar los resultados -->
         <?php  
 
-        foreach($tarea as $tareas): ?>
-            <tr>               
-                <td class="linea">  <?php echo $tareas->id;?></td>
-                <td class="linea">  <?php echo $tareas->descripcion;?></td>
-                <td class="linea"> <?php echo $tareas->tipoid;?></td>
-
-                <td class="<?=  ($tareas->estado === 'FINALIZADO')?'finalizado': 'estados'                                        
+        foreach($tarea as $tareas ): ?>
+            <tr class="borde">               
+                <td class="pt-5">  <?php echo $tareas->id;?></td>
+                <td class="pt-5">  <?php echo $tareas->descripcion;?></td>
+                <td class="pt-5"> <?php echo $tareas->tipoid;?></td>
+                <td class=" <?=  ($tareas->estado === 'FINALIZADO')?'btn finalizado': 'badge rounded-pill text-bg-warning'                                        
                                       
-                ?>" id="cambio"> <?php echo $tareas->estado;?></td>
+                ?> my-5" id="cambio"> <?php echo $tareas->estado;?></td>
                
-                <td class="linea">
+                <td class="pt-4">
+                  <div  class="d-flex align-items-center gap-3">
 
-                    <form method="POST" class="w-100" action="eliminar">
+                    <form method="POST"  action="eliminar">
                     <input type="hidden"  name="id" value="<?php echo $tareas->id; ?>">
                     <input type="hidden" name="descripcion" value="<?php echo $tareas->descripcion; ?>">
                     <input type="hidden" name="tipoid" value="<?php echo $tareas->tipoid; ?>">
@@ -58,11 +69,12 @@ if(isset($resultado)){
                     
            
                     <input type="hidden" name="tipo" value="tarea">
-
-                    <input type="submit" class="boton boton-rojo-block" value="eliminar">
+                    <button type="submit" class="bi bi-trash3 fs-1 ">
+                    <!--input type="submit" class="bi bi-x-square"--></button>
                     </form>
-
-                    <a href="actualizar?id=<?php echo $tareas->id;?>" class="boton boton-rosa-block">Actualizar</a>
+                    
+                    <a href="actualizar?id=<?php echo $tareas->id;?>" class="bi bi-pencil-square fs-1"></a>
+                  </div>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -73,5 +85,7 @@ if(isset($resultado)){
     <script src="/public/build/js/bundle.min.js"></script>
 
 </main>    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
     </body>
 </html>

@@ -9,15 +9,13 @@ use Controllers\tipoController;
 $router = new Router();
 
 $router->get('/tarea/admin', [tareaController::class, 'index'] );
-$router->get('/tarea/adminT', [tipoController::class, 'index'] );
+$router->get('/tipo/adminT', [tipoController::class, 'index'] );
 
 
 $router->get('/tarea/crear', [tareaController::class, 'crear'] );
 $router->post('/tarea/crear', [tareaController::class, 'crear'] );
 $router->get('/tarea/actualizar', [tareaController::class, 'actualizar']);
 $router->post('/tarea/actualizar', [tareaController::class, 'actualizar']);
-$router->get('/tarea/boton', [tareaController::class, 'boton']);
-$router->post('/tarea/boton', [tareaController::class, 'boton']);
 $router->post('/tarea/eliminar', [tareaController::class, 'eliminar']);
 
 //vendedores

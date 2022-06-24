@@ -106,11 +106,11 @@ class tareaController{
             $id = filter_var($id, FILTER_VALIDATE_INT);
             
             if($id){
-             $tipo  = $_POST['tipo'];
+             $tipo  = $_POST['tarea'];
                         
                 if(validarTipoContenido($tipo)){
                     $tarea = tarea::find($id);
-                    $tarea->eliminarV();
+                    $tarea->eliminar();
                 }      
             }
         }

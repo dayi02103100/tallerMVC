@@ -16,53 +16,38 @@
     }
 }
 
-table.tareas{
-    margin-top: 4rem;
-    width: 100%;
-    border-spacing: 0;
-    color: $negro;
-    text-align: center;
-    background-color: #9FC088;
-    //border-bottom:solid  gray;
 
-    td.estados{
-        background-color: #bbbb37;
-    }
-    td.finalizado{
-        background-color: #679944;
-    }
+.accion{
+    display: grid;
+    justify-content:left ;
     
-    
-      th{            
-            color: $negro;
-            padding: 2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            
-
-
-        }
-       
-        
-
- 
-
-
-
-.linea{
-    border-bottom: solid $blanco;
-    padding-top: 20px;
-        padding-bottom: 20px;
-        background-color: antiquewhite;
-        
-        border-bottom:solid  gray;
-
-        
 }
+
+button{
+    border: none;
+    background-color: white;
+    
+}
+.bi.bi-trash3{
+    color: #e91e1e;
+}
+
+a.bi.bi-pencil-square{
+    color: #055005;
+    
+}
+
+td.finalizado{
+color: #fff;
+font: 12px lato, sans-serif;
+background: #198754;
+margin-top: 20px;
+margin-bottom: 20px;
+padding: 5px;
+border-radius: 29px;
 
 
 }
-
 
 
 .fondo{
@@ -70,10 +55,7 @@ table.tareas{
     margin: auto;
 }
 
-
-/*.estados{
-    background-color: yellow;
-    .finalizado{
-        background-color: green;
-    }
-}*/
+.borde{
+    border-bottom-width: 1px ;
+    margin-top: 30px;
+}

@@ -6,7 +6,7 @@
        
         <label for="tipoid">Tipo</label>
         <select name="tarea[tipoid]" id="tipoid">
-        <option selected value="">---SELECCIONE---</option>    
+        <option selected value=" ">---SELECCIONE---</option>    
         <?php foreach($tipo as $tipos) {?>
                     <option 
                     <?php echo $tarea->tipoid === $tipos->id ? 'selected' : ''; ?>
@@ -14,11 +14,9 @@
                 <?php } ?>
         </select>
 
-        <label for="estado">estado:</label>
-        <!--input type="text" id="estado" name="tarea[estado]" placeholder="Descripcion estado" value="<//?php echo s($tarea->estado);?>"-->              
-        
+        <label for="estado">Estado:</label>        
         <select name="tarea[estado]" id="estado">
-                <option selected value= "">--SELECCIONE--</option>
+                <option selected value=" ">--SELECCIONE--</option>
                 <option value="<?php echo s("PENDIENTE");?>">PENDIENTE</option>
                 <option value="<?php echo s("FINALIZADO");?>">FINALIZADO</option>
 

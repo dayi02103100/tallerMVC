@@ -10,6 +10,8 @@ class tarea extends ActiveRecord{
     public $tipoid;
     public $estado;
 
+   
+
     public function __construct($args = [])//arreglo vacio
     
     {

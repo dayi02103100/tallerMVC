@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <body>
 <main class="contenedor seccion">
-        <h1>Aministrador de To-Do List</h1>
+        <h1>Administrador de To-Do List</h1>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="stylesheet" href="/public/build/css/app.css">
 
@@ -48,24 +48,23 @@ if(isset($resultado)){
         
         <tbody><!--  mostrar los resultados -->
         <?php  
-
-        foreach($tarea as $tareas ): ?>
+        foreach($tareas['arreglo'] as $tarea ): ?>
             <tr class="borde">               
-                <td class="pt-5">  <?php echo $tareas->id;?></td>
-                <td class="pt-5">  <?php echo $tareas->descripcion;?></td>
-                <td class="pt-5"> <?php echo $tareas->tipoid;?></td>
-                <td class=" <?=  ($tareas->estado === 'FINALIZADO')?'btn finalizado': 'badge rounded-pill text-bg-warning'                                        
+                <td class="pt-5"> <?php echo $tarea->id;?></td>
+                <td class="pt-5"> <?php echo $tarea->descripcion;?></td>
+                <td class="pt-5"> <?php echo $tarea->tipoid;?></td>
+                <td class=" <?=  ($tarea->estado === 'FINALIZADO')?'badge text-bg-success': 'badge rounded-pill text-bg-warning'                                        
                                       
-                ?> my-5" id="cambio"> <?php echo $tareas->estado;?></td>
+                ?> my-5" id="cambio"> <?php echo $tarea->estado;?></td>
                
                 <td class="pt-4">
                   <div  class="d-flex align-items-center gap-3">
 
                     <form method="POST"  action="eliminar">
-                    <input type="hidden"  name="id" value="<?php echo $tareas->id; ?>">
-                    <input type="hidden" name="descripcion" value="<?php echo $tareas->descripcion; ?>">
-                    <input type="hidden" name="tipoid" value="<?php echo $tareas->tipoid; ?>">
-                    <input type="hidden" name="cambio" value="<?php echo $tareas->estado; ?>">
+                    <input type="hidden"  name="id" value="<?php echo $tarea->id; ?>">
+                    <input type="hidden" name="descripcion" value="<?php echo $tarea->descripcion; ?>">
+                    <input type="hidden" name="tipoid" value="<?php echo $tarea->tipoid; ?>">
+                    <input type="hidden" name="cambio" value="<?php echo $tarea->estado; ?>">
                     
            
                     <input type="hidden" name="tipo" value="tarea">
@@ -73,14 +72,56 @@ if(isset($resultado)){
                     <!--input type="submit" class="bi bi-x-square"--></button>
                     </form>
                     
-                    <a href="actualizar?id=<?php echo $tareas->id;?>" class="bi bi-pencil-square fs-1"></a>
+                    <a href="actualizar?id=<?php echo $tarea->id;?>" class="bi bi-pencil-square fs-1"></a>
                   </div>
                 </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+   
+   
+   <nav aria-label="...">
+   <ul class="pagination">
+     <?php 
+      if($pagina == 1){?>
+        <li class="page-item disabled">
+        <span class="page-link">Anterior</span>  
+      </li>
 
+      <?php }else{ ?>
+        <li class="page-item">
+          <a class="page-link" href="admin?page=<?php echo $pagina-1 ?>">Anterior</a>
+        </li>
+     <?php }?>
+   
+     
+   <?php
+   for($i = 0 ; $i < $tareas['totalDePaginas'] ; $i++){ 
+     $page = $i+1;?>
+
+      <li class="<?= ($pagina == $page)?'page-item active':'page-item' ?> "><a class="page-link" href="admin?page=<?php echo $page ?>"><?php echo $page ?></a></li>
+   
+
+   <?php } 
+   if($pagina == $tareas['totalDePaginas']){?>
+    <li class="page-item disabled">
+    
+    <span class="page-link">Siguiente</span>  </li>
+
+   <?php }else{ ?>
+
+   <li class="page-item ">
+    
+      <a class="page-link" href="admin?page=<?php echo $pagina + 1 ?>">Siguiente</a>
+    </li>
+
+    <?php }?>
+   </ul>
+   
+   </nav>
+   
+       
     
     <script src="/public/build/js/bundle.min.js"></script>
 

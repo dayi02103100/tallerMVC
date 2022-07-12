@@ -11,19 +11,28 @@ use Intervention\Image\ImageManagerStatic as Image;
 class tareaController{
     
     public static function index(Router $router){
-        $tarea = tarea::all();
-        $tipo = tipo::all();
-            //mensaje condicional
+        //$tarea = tarea::all();
+        $tipo = tipo::all();        
+         /*if(!$_GET['page']){
+           header('location: admin?page=1');
+        }*/
+        $pagina = $_GET['page'] ?? 1;     
+
+        $tareas = tarea::allPaginate($pagina);
+
+        //mensaje condicional
      $resultado = $_GET['resultado'] ?? null;
 
-
+  
         $router->render('/tarea/admin', [
-            'tarea' => $tarea,
-            'tipo' => $tipo,
+            //'tarea' => $tarea,
+            'tareas'=> $tareas,
+            'pagina' => $pagina,
+            'tipo' => $tipo,         
             'resultado' => $resultado
         ]);        
     }
-    public static function crear(Router $router){
+    public static function crear(Router $router){        
         $tarea = new tarea;
         $tipo = tipo::all();
         $errores = tarea::getErrores();

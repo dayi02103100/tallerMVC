@@ -1,6 +1,7 @@
 <?php
 namespace Model;
 
+use GuzzleHttp\Psr7\Query;
 
 class ActiveRecord {
      //base de datos
@@ -135,17 +136,65 @@ class ActiveRecord {
          return $resultado;
      }
 
+     public static function allPaginate($page=1){
+        $cantidadPorPagina = 3;
+        $elementoInicial = ($page - 1) * $cantidadPorPagina;
+        $query = " SELECT * FROM  " . static::$tabla ." order by id  LIMIT $elementoInicial , $cantidadPorPagina ";
+        $resultado = self::$db->query($query);
+
+        $numeroRegistros = $resultado->num_rows;
+      
+
+        if($resultado){
+            // Cycle through results
+           $array = [];
+            while ($row = $resultado->fetch_object()){
+               $array[] = static::crearObjeto($row);
+               }
+           // Free result set
+           $resultado->close();
+       }
+
+       $query = "SELECT COUNT(id) as Count FROM " . static::$tabla ; 
+       $resultado = self::$db->query($query);     
+
+       if($resultado){
+                // Cycle through results
+            $total = '';
+                while ($row = $resultado->fetch_object()){
+                $total = $row->Count;
+                }
+            // Free result set
+            $resultado->close();
+            
+        }
+        $totalPag = ceil( $total / $cantidadPorPagina );
+        //return $totalPag;
+        
+
+       
+
+        $array3 = ['cantidadPorPagina' => $cantidadPorPagina, 
+        'elementoInicial'=>$elementoInicial, 
+        'numeroRegistros' => $numeroRegistros, 
+        'arreglo'=> $array,
+        'total'=> $total, 
+        'totalDePaginas'=>$totalPag];
+        return $array3; 
+        
+
+     }
+
+  
+
      //obtiene determinado numero de registros
-     public static function get($cantidad){
-        $query = "SELECT * FROM " . static::$tabla . " LIMIT " . $cantidad;
+     public static function get(){
+        $query = "SELECT * FROM " . static::$tabla . " LIMIT " . 3;
         $resultado = self::consultarSLQ($query);
 
         return $resultado;
     }
 
-
-
- 
      //busca un registro su id
      public static function find($id){//buscar
          $query = "SELECT * FROM " . static::$tabla . " WHERE id = ${id}";
@@ -155,7 +204,6 @@ class ActiveRecord {
          return ($resultado[0]);
  
      }
- 
  
      public static function consultarSLQ($query){
          //consultar la base de datos

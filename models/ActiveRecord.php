@@ -43,7 +43,7 @@ class ActiveRecord {
  
         $resultado= self::$db->query($query);
         if($resultado){
-            header("location: ../tarea/admin?resultado=1");            
+            //header("location: ../tarea/admin?resultado=1");            
         }        
  }
 
@@ -130,7 +130,7 @@ class ActiveRecord {
  
     //listar todas los registros
      public static function all(){
-         $query = "SELECT * FROM " . static::$tabla;
+         $query = "SELECT * FROM " .  static::$tabla ;
  
          $resultado = self::consultarSLQ($query);
          return $resultado;
@@ -227,7 +227,6 @@ class ActiveRecord {
          //$resultado->free();
  
          //retornar resultados
-         
          return $array;
         
      }

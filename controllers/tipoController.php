@@ -6,12 +6,14 @@ use Model\tipo;
 
 class tipoController{
   public static function index(Router $router){
-    $tipo = tipo::all();
+    $tipos = tipo::all();
+    $tipo = new tipo;
         //mensaje condicional
  $resultado = $_GET['resultado'] ?? null;
 
 
     $router->render('/tipo/adminT', [
+        'tipos' => $tipos,
         'tipo' => $tipo,
         'resultado' => $resultado
     ]);        
@@ -31,35 +33,33 @@ class tipoController{
             $tipo->crear();
           }
     }
-    $router->render('/tipo/crear', [
+    /*$router->render('/tipo/crear', 
         'tipo' => $tipo,
         'errores' => $errores
-    ]); 
+    ]); */
+    header('location: adminT?resultado=1');
 }
 
-  public static function actualizar(Router $router){
-    $tipos = new tipo;
-    $id = vaidarORedireccionar('/public/index.php/tarea/admin');
-    $tipos = tipo::find($id);
+  public static function actualizar(Router $router){          
+    $tipo = new tipo;
     $errores = tipo::getErrores();
-
     
     if($_SERVER['REQUEST_METHOD'] ==='POST'){
       //asignar los atrributos
       $args = $_POST['tipo'];//???
       //debuguear($args);    
-      $tipos->sincronizar($args);
+      $tipo->sincronizar($args);
 
-      $errores = $tipos->validar();
+//      $errores = $tipo->validar();
       
       if(empty($errores)){
-          $tipos->actualizar();
+          $tipo->actualizar();
+          
       }
   }
-  $router->render('/tipo/actualizar',[
-      'tipo' => $tipos,
-      'errores'=> $errores
-  ]);
+  header('location: adminT?resultado=2');
+
+
   }
   public static function eliminar(){
         

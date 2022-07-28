@@ -1,60 +1,27 @@
-<?php 
-
-    if(!isset($_SESSION)){
-        session_start();
-    }
-
-    $auth = $_SESSION['login'] ?? false;
-
-
-?>
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes Raices</title>
-    <link rel="stylesheet" href="/build/css/app.css">
-</head>
-<body>
-    
-    <header class="header <?php echo $inicio ? 'inicio' : ''; ?>">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="/principal.php">
-                    <img src="/build/img/logo.svg" alt="Logotipo de Bienes Raices">
-                </a>
+    <head>
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-                <div class="mobile-menu">
-                    <img src="/build/img/barras.svg" alt="icono menu responsive">
-                </div>
+    <body>
+<main class="contenedor seccion">
+        <h1>Administrador de To-Do List</h1>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/build/css/app.css">
 
-                <div class="derecha">
-                    <img class="dark-mode-boton" src="/build/img/dark-mode.svg">
-                    <nav class="navegacion">
-                        <a href="/nosotros.php">Nosotros</a>
-                        <a href="/anuncios.php">Anuncios</a>
-                        <a href="/blog.php">Blog</a>
-                        <a href="/contacto.php">Contacto</a>
-                        <?php if(!$auth): ?>
-                            <a href="/login.php">Inicio</a>
-                        <?php endif; ?>
-                        <?php if($auth): ?>
-                            <a href="/admin/inicio.php">Admin</a>
-                        <?php endif; ?>
-                        <?php if($auth): ?>
-                            <a href="/cerrar-sesion.php">Cerrar Sesion</a>
-                        <?php endif; ?>
-                    </nav>
-                </div>
+         <?php
+
+if(isset($resultado)){
+            $mensaje = mostrarNotificacion(intval($resultado));
                 
-            </div> <!--.barra-->
-
-            <?php
-                if($inicio){
-                    echo"<h1>Venta de casa y departamentos exclusivos de lujo</h1>";
-                }
-           ?> 
-        </div>
-    </header>
+            if($mensaje) { ?> 
+                <p class="alerta exito"><?php echo s($mensaje)?></p> 
+             <?php 
+             } 
+          }
+        ?>

@@ -20,7 +20,7 @@ $router->post('/tarea/eliminar', [tareaController::class, 'eliminar']);
 
 //vendedores
 
-$router->get('/tipo/crear', [tipoController::class, 'crear'] );
+//$router->get('/tipo/crear', [tipoController::class, 'crear'] );
 $router->post('/tipo/crear', [tipoController::class, 'crear'] );
 $router->get('/tipo/actualizar', [tipoController::class, 'actualizar']);
 $router->post('/tipo/actualizar', [tipoController::class, 'actualizar']);

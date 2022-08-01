@@ -1,12 +1,6 @@
-<html>
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <body>
-<main class="contenedor seccion">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-<link rel="stylesheet" href="/public/build/css/app.css">
-
+<?php 
+include __DIR__ . '../../../includes/templates/header.php';
+?>
 <h1>Crear Tipos</h1>
 
 <?php /* foreach($errores as $error): ?>
@@ -25,13 +19,10 @@
              <input type="submit" value="Crear Tipo" class="btn btn-success btn-lg"> 
 
       </form>
-      <script src="/public/build/js/bundle.min.js"></script>
 
-</main>
-    </body>
-
-</html>
-
+<?php 
+include __DIR__ . '../../../includes/templates/footer.php';
+?>
 
 
 

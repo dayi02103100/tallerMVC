@@ -1,20 +1,6 @@
-<!doctype html>
-<html lang="en">
-    <head>
-     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<?php 
+include __DIR__ . '../../../includes/templates/header.php';
 
-    <body>
-<main class="contenedor seccion">
-        <h1>Administrador de To-Do List</h1>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link rel="stylesheet" href="/public/build/css/app.css">
-
-         <?php
 
 if(isset($resultado)){
             $mensaje = mostrarNotificacion(intval($resultado));
@@ -25,11 +11,10 @@ if(isset($resultado)){
              } 
           }
         ?>
-
-  
+        
 <h2>TIPOS</h2>
 <div class=" p-2 d-flex justify-content-left ">
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#abrir">Open Modal</button>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#abrir" >Nuevo Tipo</button>
 
 <div class="modal fade pt-5" id="abrir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="opacity: 3;">
     <div class="modal-dialog modal-lg">
@@ -45,9 +30,9 @@ if(isset($resultado)){
 </div>
 
         
-        <a  href="crear" class="btn btn-primary disable fs-2 text-capitalize mx-3" >nueva tipo</a>
+        <!--a  href="crear" class="btn btn-primary disable fs-2 text-capitalize mx-3" >nueva tipo</!--a-->
 
-        <a  href="../tarea/admin" class="btn btn-info disable fs-2 text-capitalize">tarea</a>
+        <a  href="../tarea/admin" class="btn btn-primary disable fs-2 ms-5 text-capitalize" >tarea</a>
   </div >
 
   <div class="modal fade" id="myModal" role="dialog">
@@ -63,7 +48,7 @@ if(isset($resultado)){
           <p>Some text in the modal.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
         </div>
       </div>
       
@@ -71,7 +56,34 @@ if(isset($resultado)){
   </div>
   
 </div>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Open modal for @getbootstrap</button>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="opacity: 3;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
     <table class= "table mt-5">
         <thead>
             <tr>
@@ -125,8 +137,6 @@ if(isset($resultado)){
             <?php endforeach; ?>
         </tbody>
     </table>
-    <script src="/public/build/js/bundle.min.js"></script>
-
-</main>    
-    </body>
-</html>
+    <?php
+    include __DIR__ . '../../../includes/templates/footer.php';
+    ?>

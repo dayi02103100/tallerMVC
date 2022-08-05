@@ -24,6 +24,7 @@ if(isset($resultado)){
         <div class="modal-header">
 
         <?php include __DIR__ . '/crear.php';?>        
+          <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerca</font></font></button>
         </div>
       </div>
     </div>

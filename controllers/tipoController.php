@@ -77,7 +77,8 @@ class tipoController{
             }      
         }
     }
-         
+    header('location: adminT?resultado=3');
+
     }
 
 }

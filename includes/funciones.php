@@ -32,19 +32,29 @@ function validarTipoContenido($tipo){
 
 function mostrarNotificacion($codigo){
     $mensaje = '';
-
+    
     switch($codigo){
-        case 1:
-            $mensaje = 'Creado Correctamente';
-            break;
+        case 1:?>
+            <div class="alert alert-success"  id="demo">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <h3>Creado Correctamente</h3>
+            </div>            
+            <?php break;
 
-        case 2:
-            $mensaje = 'Actualizado Correctamente';
-            break;
+        case 2:?>
+            <div class="alert alert-warning"  id="demo">
+            <button type="button" class="close " data-dismiss="alert">&times;</button>
+           <h3>Actualizado Correctamente</h3>
+            </div>           
+            <?php break;
 
-        case 3:
-            $mensaje = 'Eliminado Correctamente';
-            break;
+        case 3:?>
+
+           <div class="alert alert-danger " id="demo">
+           <button type="button" class="close"  id="demo" data-dismiss="alert">&times;</button>
+           <h3>Eliminado Correctamente</h3>
+            </div>           
+            <?php break;
 
         
     
@@ -54,6 +64,7 @@ function mostrarNotificacion($codigo){
         break;
              
     }
+
 
     return $mensaje;
 }
@@ -69,3 +80,5 @@ function vaidarORedireccionar(string $url){
 
     return $id;
 }
+
+?>

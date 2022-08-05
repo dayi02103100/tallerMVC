@@ -13,6 +13,8 @@ if(isset($resultado)){
         ?>
         
 <h2>TIPOS</h2>
+
+
 <div class=" p-2 d-flex justify-content-left ">
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#abrir" >Nuevo Tipo</button>
 
@@ -21,9 +23,7 @@ if(isset($resultado)){
       <div class="modal-content">
         <div class="modal-header">
 
-        <?php include __DIR__ . '/crear.php';?>
-        
-          <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerca</font></font></button>
+        <?php include __DIR__ . '/crear.php';?>        
         </div>
       </div>
     </div>
@@ -56,34 +56,7 @@ if(isset($resultado)){
   </div>
   
 </div>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Open modal for @getbootstrap</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="opacity: 3;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
     <table class= "table mt-5">
         <thead>
             <tr>
@@ -114,29 +87,66 @@ if(isset($resultado)){
                     </form>
                    
 
-                    <button type="button" class="btn btn-lg bi bi-pencil-square fs-1" id="boton" data-toggle="modal" data-target="#editar<?php echo $tipo->id;?>" > </button>
+                    <button type="button" class="btn btn-lg bi bi-pencil-square fs-1" id="boton" data-toggle="modal" 
+                    data-id="<?php echo $tipo->id; ?>" data-nombre="<?php echo $tipo->nombre; ?>"data-target="#editar"> </button>
 
                     <!--a href="../tipo/actualizar?id=<?php echo $tipo->id;?>" data-target="#editar" class="bi bi-pencil-square fs-1"></!--a-->
-                    <div class="modal fade pt-5" id="editar<?php echo $tipo->id;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="opacity: 3;">
+                                         
+                       </div>
+                      </td>
+                     </tr>
+                    <?php endforeach; ?>                                          
+                  </tbody>                 
+                </table>
+                <div class="modal  pt-5" id="editar" tabindex="-1" role="dialog" 
+      aria-labelledby="myModalLabel" aria-hidden="true" style="opacity: 3;">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
-                            <div class="modal-header">
+                            <div class="modal-body" >
 
                               <?php include __DIR__ . '/actualizar.php';?>   
 
-                              <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerca</font></font></button>
-                            </div>
+                  
+                           </div>
                           </div>
-                          </div>
-                        </div>
-                        
- 
-                    </div>
-                    </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                         </div>
+                        </div> 
+      
+
+<script>
+$(document).ready(function() {
+
+const editar = document.getElementById('editar')
+var myModal = new bootstrap.Modal(editar)
+console.log(myModal);
+
+
+})
+
+$('#editar').on('shown.bs.modal', function(event) {
+    //fired only in second modal
+    console.log(event);
+    
+
+const button = event.relatedTarget
+const recipient = button.getAttribute('data-id')
+const recipients = button.getAttribute('data-nombre')
+console.log(recipient);
+console.log(recipients);
+
+
+const id = document.getElementsByName('tipo[id]')
+const nombre = document.getElementsByName('tipo[nombre]')
+console.log(nombre);
+id[1].value = recipient
+nombre[1].value = recipients    
+});
+
+
+
+</script>
+
     <?php
+    
     include __DIR__ . '../../../includes/templates/footer.php';
     ?>

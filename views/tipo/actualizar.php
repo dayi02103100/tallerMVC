@@ -1,6 +1,4 @@
-<?php 
-include __DIR__ . '../../../includes/templates/header.php';
-?>
+
   
 <h1>Actualizar Tipo</h1>
 
@@ -20,6 +18,3 @@ include __DIR__ . '../../../includes/templates/header.php';
 
       </form>
 
-<?php 
-include __DIR__ . '../../../includes/templates/footer.php';
-?>

@@ -47,6 +47,7 @@ class tipoController{
     if($_SERVER['REQUEST_METHOD'] ==='POST'){
       //asignar los atrributos
       $args = $_POST['tipo'];//???
+
       //debuguear($args);    
       $tipo->sincronizar($args);
 
@@ -54,7 +55,7 @@ class tipoController{
       
       if(empty($errores)){
           $tipo->actualizar();
-          
+
       }
   }
   header('location: adminT?resultado=2');
